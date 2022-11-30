@@ -1,4 +1,8 @@
 const NotFound = () => import('../pages/notFound/NotFound.vue') // 404 页面
+const MainLayout = () => import('../pages/layouts/mainLayout.vue') // 404 页面
+
+// 签署管理
+const Papers = () => import('../pages/signature/papers/index.vue') // 文件发起
 
 const routes = [
   {
@@ -6,6 +10,7 @@ const routes = [
     name: 'index',
     title: '签章平台',
     component: () => import('@/pages/layouts/baseLayout.vue'), //.vue不能省略
+    redirect: { name: 'signature' },
     children: [
       {
         path: 'home',
@@ -17,13 +22,14 @@ const routes = [
         path: 'signature',
         title: '签署管理',
         name: 'signature',
-        component: NotFound,
+        component: MainLayout,
+        redirect: { name: 'papers' },
         children: [
           {
             path: 'papers',
             title: '文件发起',
             name: 'papers',
-            component: NotFound
+            component: Papers
           },
           {
             path: 'formwork',
@@ -43,7 +49,7 @@ const routes = [
         path: 'seal',
         title: '印章管理',
         name: 'seal',
-        component: NotFound,
+        component: MainLayout,
         children: [
           {
             path: 'corporate',
