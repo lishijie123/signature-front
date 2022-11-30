@@ -5,7 +5,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <template>
   <Test></Test>
-  <HelloWorld msg="Vite + Vue" />
+  <RouterView></RouterView>
 </template>
 
 <style scoped>

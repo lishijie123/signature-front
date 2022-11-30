@@ -1,18 +1,23 @@
-/*
- * @Author: 李士杰 lisj@seeyon.com
- * @Date: 2022-11-29 19:49:29
- * @LastEditors: 李士杰 lisj@seeyon.com
- * @LastEditTime: 2022-11-29 19:50:49
- * @FilePath: /signature-front/vite.config.js
- * @Description: 
- */
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-
-// https://vitejs.dev/config/
+import * as path from 'path'
 export default defineConfig({
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    }
+  },
   plugins: [vue()],
   server: {
     open: true,
-  }
+    proxy: {
+      // 选项写法
+      '/api': {
+        target: '172.20.2.20',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
+  },
+  
 })
