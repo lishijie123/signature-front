@@ -2,46 +2,42 @@
   import { PieChartOutlined, DesktopOutlined, UserOutlined, TeamOutlined, FileOutlined } from '@ant-design/icons-vue';
   import { reactive, ref} from 'vue';
   const collapsed = ref(false)
-  const selectedKeys = reactive(['2'])
+  const selectedKeys = ref(['1'])
+  const isCollapsed = ref(true)
+  const onOpenChange = ()=>{
+    console.log('11111111111')
+  }
 </script>
 
 <template>
   <a-layout-sider v-model:collapsed="collapsed" collapsible>
     <div class="logo" />
-    <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
+    <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline" @openChange="onOpenChange" :inlineCollapsed="isCollapsed">
       <a-menu-item key="1">
         <pie-chart-outlined />
-        <span>Option 1</span>
-      </a-menu-item>
-      <a-menu-item key="2">
-        <desktop-outlined />
-        <span>Option 2</span>
+        <span>业务首页</span>
       </a-menu-item>
       <a-sub-menu key="sub1">
         <template #title>
           <span>
             <user-outlined />
-            <span>User</span>
+            <span>签署管理</span>
           </span>
         </template>
-        <a-menu-item key="3">Tom</a-menu-item>
-        <a-menu-item key="4">Bill</a-menu-item>
-        <a-menu-item key="5">Alex</a-menu-item>
+        <a-menu-item key="3"><span>文件发起</span></a-menu-item>
+        <a-menu-item key="4"><span>模板发起</span></a-menu-item>
+        <a-menu-item key="5"><span>签署任务</span></a-menu-item>
       </a-sub-menu>
       <a-sub-menu key="sub2">
         <template #title>
           <span>
             <team-outlined />
-            <span>Team</span>
+            <span>印章管理</span>
           </span>
         </template>
-        <a-menu-item key="6">Team 1</a-menu-item>
-        <a-menu-item key="8">Team 2</a-menu-item>
+        <a-menu-item key="6">企业印章管理</a-menu-item>
+        <a-menu-item key="8">个人印章管理</a-menu-item>
       </a-sub-menu>
-      <a-menu-item key="9">
-        <file-outlined />
-        <span>File</span>
-      </a-menu-item>
     </a-menu>
   </a-layout-sider>
 </template>
