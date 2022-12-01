@@ -3,7 +3,6 @@
   import { reactive, ref} from 'vue';
   const collapsed = ref(false)
   const selectedKeys = ref(['1'])
-  const isCollapsed = ref(true)
   const onOpenChange = ()=>{
     console.log('11111111111')
   }
@@ -12,7 +11,7 @@
 <template>
   <a-layout-sider v-model:collapsed="collapsed" collapsible>
     <div class="logo" />
-    <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline" @openChange="onOpenChange" :inlineCollapsed="isCollapsed">
+    <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline" @openChange="onOpenChange" v-model:openKeys="true">
       <a-menu-item key="1">
         <pie-chart-outlined />
         <span>业务首页</span>
